@@ -2,6 +2,7 @@
 
 namespace Jobsoc\ServiceProvider;
 
+use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\PHPDriver;
 use Doctrine\ORM\Tools\Setup;
@@ -19,12 +20,30 @@ class DoctrineProvider extends ServiceProvider
 
         $this->getContainer()->singleton('db', function() use ($db_config) {
             $isDevMode = true;
-            // Create a simple "default" Doctrine ORM configuration for Annotations
-            // $config = Setup::createAnnotationMetadataConfiguration([APP_DIR.'/Entity'], $isDevMode);
 
+            if ($isDevMode) {
+                $cache = new \Doctrine\Common\Cache\ArrayCache;
+            } else {
+                $redis = new \Redis();
+                $redis->connect('127.0.0.1');
+                $cache = new \Doctrine\Common\Cache\RedisCache();
+                $cache->setRedis($redis);
+            }
+
+            $config = new Configuration;
+            $config->setMetadataCacheImpl($cache);
             $driver = new PHPDriver(APP_DIR.'/config/doctrine/mapping');
-            $config = Setup::createConfiguration($isDevMode);
             $config->setMetadataDriverImpl($driver);
+            $config->setQueryCacheImpl($cache);
+            $config->setProxyDir(APP_DIR.'/Proxy');
+            $config->setProxyNamespace('Jobsoc\Proxy');
+
+
+            if ($isDevMode) {
+                $config->setAutoGenerateProxyClasses(true);
+            } else {
+                $config->setAutoGenerateProxyClasses(false);
+            }
 
             // obtaining the entity manager
             return EntityManager::create($db_config['connection'], $config);
