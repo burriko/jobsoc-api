@@ -18,9 +18,9 @@ class DoctrineProvider extends ServiceProvider
         $db_config = $this->getContainer()['app']->getConfig('database');
 
         $this->getContainer()->singleton('db', function() use ($db_config) {
-            // Create a simple "default" Doctrine ORM configuration for Annotations
             $isDevMode = true;
-            $config = Setup::createAnnotationMetadataConfiguration([APP_DIR.'/Entity'], $isDevMode);
+            // Create a simple "default" Doctrine ORM configuration for Annotations
+            // $config = Setup::createAnnotationMetadataConfiguration([APP_DIR.'/Entity'], $isDevMode);
 
             $driver = new PHPDriver(APP_DIR.'/config/doctrine/mapping');
             $config = Setup::createConfiguration($isDevMode);

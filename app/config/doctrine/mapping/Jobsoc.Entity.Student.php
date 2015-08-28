@@ -1,24 +1,10 @@
 <?php
 
-$metadata->setTableName('jobsoc_students');
+$builder = new Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder($metadata);
 
-$metadata->mapField([
-   'id' => true,
-   'fieldName' => 'id',
-   'type' => 'integer'
-]);
+$builder->setTable('jobsoc_students');
 
-$metadata->mapField([
-   'fieldName' => 'title',
-   'type' => 'string',
-]);
-
-$metadata->mapField([
-   'fieldName' => 'first_name',
-   'type' => 'string',
-]);
-
-$metadata->mapField([
-   'fieldName' => 'surname',
-   'type' => 'string',
-]);
+$builder->createField('id', 'integer')->isPrimaryKey()->generatedValue()->build();
+$builder->addField('title', 'string');
+$builder->addField('first_name', 'string');
+$builder->addField('surname', 'string');
