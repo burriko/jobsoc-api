@@ -20,7 +20,9 @@ $app->get('/students/{id}', function(Request $request, Response $response, array
     $studentRepository = $app['db']->getRepository(Student::class);
     $student = $studentRepository->find($args['id']);
 
-    return $response->setContent(print_r($student, true));
+    foreach ($student->getPlacements() as $placement) {
+        print_r($placement->getPlaced());
+        print_r($placement->getAssignment()->getTitle());
+    }
+    return $response;
 });
-
-
