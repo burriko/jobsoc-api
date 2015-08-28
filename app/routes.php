@@ -8,11 +8,19 @@ $app->get('/', function(Request $request, Response $response, array $args) {
     return $response->setContent('hi');
 });
 
-$app->get('/student', function(Request $request, Response $response, array $args) use ($app) {
+$app->get('/students', function(Request $request, Response $response, array $args) use ($app) {
     $studentRepository = $app['db']->getRepository(Student::class);
     $students = $studentRepository->findAll();
-    var_dump($students);
-    return $response->setContent(json_encode($students));
+
+    return $response->setContent(print_r($students, true));
+});
+
+
+$app->get('/students/{id}', function(Request $request, Response $response, array $args) use ($app) {
+    $studentRepository = $app['db']->getRepository(Student::class);
+    $student = $studentRepository->find($args['id']);
+
+    return $response->setContent(print_r($student, true));
 });
 
 
