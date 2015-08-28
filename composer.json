@@ -1,0 +1,12 @@
+{
+    "require": {
+        "alexbilbie/proton": "^1.4",
+        "doctrine/orm": "^2.5",
+        "league/fractal": "^0.12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jobsoc\\": "app/"
+        }
+    }
+}
