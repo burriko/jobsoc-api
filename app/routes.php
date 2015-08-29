@@ -16,6 +16,8 @@ $app->get('/students', function(Request $request, Response $response, array $arg
     $studentRepository = $app['db']->getRepository(Student::class);
     $students = $studentRepository->findAll();
 
+    $response->headers->add(['Content-Type' => 'application/json']);
+
     $fractal = new FractalManager();
 
     $resource = new FractalCollection($students, new StudentTransformer);
@@ -25,6 +27,8 @@ $app->get('/students', function(Request $request, Response $response, array $arg
 $app->get('/students/{id}', function(Request $request, Response $response, array $args) use ($app) {
     $studentRepository = $app['db']->getRepository(Student::class);
     $student = $studentRepository->find($args['id']);
+
+    $response->headers->add(['Content-Type' => 'application/json']);
 
     $fractal = new FractalManager();
 
