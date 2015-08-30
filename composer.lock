@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "53d0a4f45b6b96c72531038a133abeb6",
+    "hash": "d35ba3b2921fc525a80997767873278a",
     "packages": [
         {
             "name": "alexbilbie/proton",
@@ -774,16 +774,16 @@
         },
         {
             "name": "league/fractal",
-            "version": "0.12.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/fractal.git",
-                "reference": "0a51dcb6398dc2377d086210d0624996a1df8322"
+                "reference": "ed997d2c20544ab6485ed00c531a36c886a4e738"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/0a51dcb6398dc2377d086210d0624996a1df8322",
-                "reference": "0a51dcb6398dc2377d086210d0624996a1df8322",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/ed997d2c20544ab6485ed00c531a36c886a4e738",
+                "reference": "ed997d2c20544ab6485ed00c531a36c886a4e738",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
                 "league",
                 "rest"
             ],
-            "time": "2015-03-19 15:16:43"
+            "time": "2015-08-29 21:44:54"
         },
         {
             "name": "league/route",
@@ -1362,7 +1362,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "league/fractal": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
