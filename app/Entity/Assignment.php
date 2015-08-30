@@ -156,4 +156,3 @@ class Assignment
         return $this->placements;
     }
 }
-

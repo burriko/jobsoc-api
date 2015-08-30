@@ -139,4 +139,3 @@ class Placement
         return $this->assignment;
     }
 }
-
