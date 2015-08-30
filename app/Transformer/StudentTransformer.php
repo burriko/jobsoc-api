@@ -28,6 +28,6 @@ class StudentTransformer extends TransformerAbstract
 
     public function includePlacements(Student $student)
     {
-        return $this->collection($student->getPlacements(), new PlacementTransformer);
+        return $this->collection($student->getPlacements(), new PlacementTransformer, 'placements');
     }
 }
