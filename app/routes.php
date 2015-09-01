@@ -17,10 +17,10 @@ $app->get('/students', function(Request $request, Response $response, array $arg
     $studentRepository = $app['db']->getRepository(Student::class);
     $students = $studentRepository->findAll();
 
-    $response->headers->add(['Content-Type' => 'application/json']);
+    $response->headers->add(['Content-Type' => 'application/vnd.api+json']);
 
     $fractal = new FractalManager();
-    $fractal->setSerializer(new JsonApiSerializer());
+    $fractal->setSerializer(new JsonApiSerializer('http://careers.dev/jobsoc-api/public'));
 
     $resource = new FractalCollection($students, new StudentTransformer, 'students');
     return $response->setContent($fractal->createData($resource)->toJson());
@@ -30,11 +30,12 @@ $app->get('/students/{id}', function(Request $request, Response $response, array
     $studentRepository = $app['db']->getRepository(Student::class);
     $student = $studentRepository->find($args['id']);
 
-    $response->headers->add(['Content-Type' => 'application/json']);
+    $response->headers->add(['Content-Type' => 'application/vnd.api+json']);
 
     $fractal = new FractalManager();
-    $fractal->setSerializer(new JsonApiSerializer());
+    $fractal->setSerializer(new JsonApiSerializer('http://careers.dev/jobsoc-api/public'));
+    $fractal->parseIncludes('placements.assignment');
 
-    $resource = new FractalItem($student, new StudentTransformer, 'student');
+    $resource = new FractalItem($student, new StudentTransformer, 'students');
     return $response->setContent($fractal->createData($resource)->toJson());
 });

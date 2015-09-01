@@ -12,10 +12,6 @@ class StudentTransformer extends TransformerAbstract
         'placements',
     ];
 
-    protected $defaultIncludes = [
-        'placements'
-    ];
-
     public function transform(Student $student)
     {
         return [
