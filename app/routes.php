@@ -26,7 +26,9 @@ $app->get('/students', function(Request $request, Response $response, array $arg
     return $response->setContent($fractal->createData($resource)->toJson());
 });
 
-$app->get('/students/{id}', function(Request $request, Response $response, array $args) use ($app) {
+$app->get('/students/{id}', 'Jobsoc\Action\Students\View::handle');
+
+/*$app->get('/students/{id}', function(Request $request, Response $response, array $args) use ($app) {
     $studentRepository = $app['db']->getRepository(Student::class);
     $student = $studentRepository->find($args['id']);
 
@@ -38,4 +40,4 @@ $app->get('/students/{id}', function(Request $request, Response $response, array
 
     $resource = new FractalItem($student, new StudentTransformer, 'students');
     return $response->setContent($fractal->createData($resource)->toJson());
-});
+});*/

@@ -18,3 +18,9 @@ $app->register('\Jobsoc\ServiceProvider\DoctrineProvider');
 
 // Register events
 // $app->subscribe('LeaveWasRequested', $app[App\Leave\Event\LeaveWasRequested::class]);
+
+$app['Symfony\Component\HttpFoundation\Response'] = function() {
+    $response = new Symfony\Component\HttpFoundation\JsonResponse();
+    $response->headers->add(['Content-Type' => 'application/vnd.api+json']);
+    return $response;
+};

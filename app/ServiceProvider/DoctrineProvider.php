@@ -7,11 +7,13 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\PHPDriver;
 use Doctrine\ORM\Tools\Setup;
 use League\Container\ServiceProvider;
+use Doctrine\ORM\EntityManagerInterface;
 
 class DoctrineProvider extends ServiceProvider
 {
     protected $provides = [
-        'db'
+        'db',
+        EntityManagerInterface::class
     ];
 
     public function register()
@@ -48,5 +50,11 @@ class DoctrineProvider extends ServiceProvider
             // obtaining the entity manager
             return EntityManager::create($db_config['connection'], $config);
         });
+
+
+        $this->getContainer()->singleton(
+            EntityManagerInterface::class,
+            $this->getContainer()['db']
+        );
     }
 }
