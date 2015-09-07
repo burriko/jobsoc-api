@@ -37,7 +37,7 @@ class DoctrineProvider extends ServiceProvider
             $driver = new PHPDriver(APP_DIR.'/config/doctrine/mapping');
             $config->setMetadataDriverImpl($driver);
             $config->setQueryCacheImpl($cache);
-            $config->setProxyDir(APP_DIR.'/Proxy');
+            $config->setProxyDir(APP_DIR.'/src/Proxy');
             $config->setProxyNamespace('Jobsoc\Proxy');
 
 
