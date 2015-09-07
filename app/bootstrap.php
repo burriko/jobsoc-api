@@ -14,6 +14,7 @@ $app->getContainer()->singleton(League\Event\Emitter::class, $app->getEventEmitt
 
 // Register service providers
 $app->register('\Jobsoc\ServiceProvider\DoctrineProvider');
+$app->register('\Jobsoc\ServiceProvider\StudentRepositoryProvider');
 // $app->register('\App\Leave\LeaveServiceProvider');
 
 // Register events
