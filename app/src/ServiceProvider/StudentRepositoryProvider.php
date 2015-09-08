@@ -6,11 +6,14 @@ use League\Container\ServiceProvider;
 use Jobsoc\Repository\StudentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Jobsoc\Entity\Student;
+use Jobsoc\Repository\PlacementRepository;
+use Jobsoc\Entity\Placement;
 
-class StudentRepositoryProvider extends ServiceProvider
+class RepositoryProvider extends ServiceProvider
 {
     protected $provides = [
-        StudentRepository::class
+        StudentRepository::class,
+        PlacementRepository::class,
     ];
 
     public function register()
@@ -21,6 +24,13 @@ class StudentRepositoryProvider extends ServiceProvider
             StudentRepository::class,
             function() use ($db) {
                 return $db->getRepository(Student::class);
+            }
+        );
+
+        $this->getContainer()->singleton(
+            PlacementRepository::class,
+            function() use ($db) {
+                return $db->getRepository(Placement::class);
             }
         );
     }

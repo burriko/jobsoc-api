@@ -4,7 +4,6 @@ namespace Jobsoc\Action\Students;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Jobsoc\Entity\Student;
 use Jobsoc\Presenter\StudentPresenter;
 use Jobsoc\Repository\StudentRepository;
 
