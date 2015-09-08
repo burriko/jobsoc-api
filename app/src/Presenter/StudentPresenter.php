@@ -7,6 +7,7 @@ use Jobsoc\Entity\Student;
 use Jobsoc\Transformer\StudentTransformer;
 use League\Fractal\Serializer\JsonApiSerializer;
 use League\Fractal\Resource\Item;
+use League\Fractal\Resource\Collection;
 
 class StudentPresenter
 {
@@ -21,6 +22,11 @@ class StudentPresenter
         $this->entity = $student;
     }
 
+    public function setEntities(array $students)
+    {
+        $this->entities = $students;
+    }
+
     public function parseIncludes($includes)
     {
         $this->fractal->parseIncludes($includes);
@@ -28,7 +34,16 @@ class StudentPresenter
 
     public function toArray()
     {
-        $resource = new Item($this->entity, new StudentTransformer, 'students');
-        return $this->fractal->createData($resource)->toArray();
+        return $this->fractal->createData($this->getResource())->toArray();
+    }
+
+    private function getResource()
+    {
+        if (isset($this->entity)) {
+            $resource = new Item($this->entity, new StudentTransformer, 'students');
+        } else {
+            $resource = new Collection($this->entities, new StudentTransformer, 'students');
+        }
+        return $resource;
     }
 }
