@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\Driver\PHPDriver;
 use Doctrine\ORM\Tools\Setup;
 use League\Container\ServiceProvider;
 use Doctrine\ORM\EntityManagerInterface;
+use Cobaia\Doctrine\MonologSQLLogger;
 
 class DoctrineProvider extends ServiceProvider
 {
@@ -39,6 +40,7 @@ class DoctrineProvider extends ServiceProvider
             $config->setQueryCacheImpl($cache);
             $config->setProxyDir(APP_DIR.'/src/Proxy');
             $config->setProxyNamespace('Jobsoc\Proxy');
+            $config->setSQLLogger(new MonologSQLLogger(null, null, APP_DIR . '/log/'));
 
 
             if ($isDevMode) {

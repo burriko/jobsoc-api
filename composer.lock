@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cf84a97d731c91d35f3130a33594a6e0",
+    "hash": "688d42de5d9b1792e9eefffca142b048",
     "packages": [
         {
             "name": "alexbilbie/proton",
@@ -63,6 +63,44 @@
                 "proton"
             ],
             "time": "2015-03-26 17:35:31"
+        },
+        {
+            "name": "cobaia/monologdoctrine",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krolow/MonologDoctrine.git",
+                "reference": "87b2c7dbef37e8824cebd8fb9b1acb2262b3086f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krolow/MonologDoctrine/zipball/87b2c7dbef37e8824cebd8fb9b1acb2262b3086f",
+                "reference": "87b2c7dbef37e8824cebd8fb9b1acb2262b3086f",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": ">= 2.3.0",
+                "monolog/monolog": ">= 1.2.1",
+                "php": ">= 5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cobaia": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vinícius Krolow",
+                    "email": "krolow@gmail.com"
+                }
+            ],
+            "description": "Monolog meets Doctrine as SQL Logger",
+            "time": "2014-05-15 19:31:55"
         },
         {
             "name": "doctrine/annotations",
