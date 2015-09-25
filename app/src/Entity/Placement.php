@@ -138,4 +138,9 @@ class Placement
     {
         return $this->assignment;
     }
+
+    public function isActive()
+    {
+        return $this->getEnded() === null;
+    }
 }
