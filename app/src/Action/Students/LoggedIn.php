@@ -17,10 +17,10 @@ class LoggedIn
 
     public function handle(Request $request, JsonResponse $response)
     {
-        $student = $this->students->find(10);
+        $student = $this->students->findWithPlacements(226);
 
         $this->presenter->setEntity($student);
-        $this->presenter->parseIncludes('placements.assignment');
+        $this->presenter->parseIncludes('placements.assignment,placements.shifts');
 
         return $response->setData($this->presenter->toArray());
     }

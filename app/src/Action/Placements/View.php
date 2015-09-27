@@ -20,7 +20,7 @@ class View
         $placement = $this->placements->find($args['id']);
 
         $this->presenter->setEntity($placement);
-        $this->presenter->parseIncludes('assignment');
+        $this->presenter->parseIncludes('assignment,shifts');
 
         return $response->setData($this->presenter->toArray());
     }

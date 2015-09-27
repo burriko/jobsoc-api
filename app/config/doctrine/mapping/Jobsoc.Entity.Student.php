@@ -10,4 +10,4 @@ $builder->addField('title', 'string');
 $builder->addField('first_name', 'string');
 $builder->addField('surname', 'string');
 
-$builder->addOneToMany('placements', 'Jobsoc\Entity\Placement', 'student');
+$builder->createOneToMany('placements', 'Jobsoc\Entity\Placement')->mappedBy('student')->fetchEager()->build();

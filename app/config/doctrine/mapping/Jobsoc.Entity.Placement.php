@@ -10,4 +10,6 @@ $builder->addField('placed', 'datetime');
 $builder->addField('ended', 'date');
 
 $builder->addManyToOne('student', 'Jobsoc\Entity\Student');
-$builder->addManyToOne('assignment', 'Jobsoc\Entity\Assignment');
+$builder->createManyToOne('assignment', 'Jobsoc\Entity\Assignment')->fetchEager()->build();
+$builder->createOneToMany('shifts', 'Jobsoc\Entity\Shift')->mappedBy('placement')->fetchEager()->build();
+

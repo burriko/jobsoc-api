@@ -32,6 +32,18 @@ class Placement
      */
     private $assignment;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $shifts;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->shifts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -137,6 +149,40 @@ class Placement
     public function getAssignment()
     {
         return $this->assignment;
+    }
+
+    /**
+     * Add shift
+     *
+     * @param \Jobsoc\Entity\Shift $shift
+     *
+     * @return Placement
+     */
+    public function addShift(\Jobsoc\Entity\Shift $shift)
+    {
+        $this->shifts[] = $shift;
+
+        return $this;
+    }
+
+    /**
+     * Remove shift
+     *
+     * @param \Jobsoc\Entity\Shift $shift
+     */
+    public function removeShift(\Jobsoc\Entity\Shift $shift)
+    {
+        $this->shifts->removeElement($shift);
+    }
+
+    /**
+     * Get shifts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getShifts()
+    {
+        return $this->shifts;
     }
 
     public function isActive()
