@@ -3,7 +3,9 @@
         "alexbilbie/proton": "^1.4",
         "doctrine/orm": "^2.5",
         "league/fractal": "dev-master",
-        "cobaia/monologdoctrine": "^1.0"
+        "cobaia/monologdoctrine": "^1.0",
+        "stack/builder": "^1.0",
+        "stack/run": "^1.0"
     },
     "autoload": {
         "psr-4": {

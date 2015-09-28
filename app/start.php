@@ -4,4 +4,8 @@ require 'bootstrap.php';
 
 require 'routes.php';
 
-$app->run();
+$stack = new Stack\Builder();
+$stack->push('Jobsoc\Middleware\JsonApi');
+
+$app = $stack->resolve($app);
+Stack\run($app);

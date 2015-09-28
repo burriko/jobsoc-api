@@ -20,8 +20,7 @@ $app->register('\Jobsoc\ServiceProvider\RepositoryProvider');
 // Register events
 // $app->subscribe('LeaveWasRequested', $app[App\Leave\Event\LeaveWasRequested::class]);
 
+// Inject JsonResponse into route handlers
 $app['Symfony\Component\HttpFoundation\Response'] = function() {
-    $response = new Symfony\Component\HttpFoundation\JsonResponse();
-    $response->headers->add(['Content-Type' => 'application/vnd.api+json']);
-    return $response;
+    return new Symfony\Component\HttpFoundation\JsonResponse();
 };
