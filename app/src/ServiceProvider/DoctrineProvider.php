@@ -40,10 +40,10 @@ class DoctrineProvider extends ServiceProvider
             $config->setQueryCacheImpl($cache);
             $config->setProxyDir(APP_DIR.'/src/Proxy');
             $config->setProxyNamespace('Jobsoc\Proxy');
-            $config->setSQLLogger(new MonologSQLLogger(null, null, APP_DIR . '/log/'));
 
 
             if ($isDevMode) {
+                $config->setSQLLogger(new MonologSQLLogger(null, null, APP_DIR . '/log/'));
                 $config->setAutoGenerateProxyClasses(true);
             } else {
                 $config->setAutoGenerateProxyClasses(false);
